@@ -276,6 +276,34 @@ function resetBackground() {
 updateDisplay();
 
 </script>
+<!-- زر فتح الخلفيات -->
+<button onclick="toggleWallpapers()" style="padding: 10px 20px; font-size: 16px; cursor: pointer; border-radius: 8px; border: none; background: #0f172a; color: white;">
+    🖼️ اختر الخلفية
+</button>
+
+<!-- قائمة الخلفيات (مخفية وتظهر عند الضغط على الزر) -->
+<div id="wallpaperMenu" style="display: none; margin-top: 15px; gap: 10px; justify-content: center; flex-wrap: wrap;">
+    <img src="Screenshot_174124-20261119.jpg" onclick="changeBg(this.src)" width="80" height="80" style="cursor: pointer; border-radius: 8px; object-fit: cover; border: 2px solid #0f172a;">
+    <img src="Screenshot_174208-20261119.jpg" onclick="changeBg(this.src)" width="80" height="80" style="cursor: pointer; border-radius: 8px; object-fit: cover; border: 2px solid #0f172a;">
+    <img src="Screenshot_174238-20261119.jpg" onclick="changeBg(this.src)" width="80" height="80" style="cursor: pointer; border-radius: 8px; object-fit: cover; border: 2px solid #0f172a;">
+    <img src="Screenshot_174309-20261119.jpg" onclick="changeBg(this.src)" width="80" height="80" style="cursor: pointer; border-radius: 8px; object-fit: cover; border: 2px solid #0f172a;">
+</div>
+<script>
+    // دالة فتح وإغلاق قائمة الخلفيات
+    function toggleWallpapers() {
+        var menu = document.getElementById("wallpaperMenu");
+        if (menu.style.display === "none") {
+            menu.style.display = "flex";
+        } else {
+            menu.style.display = "none";
+        }
+    }
+
+    // دالة تغيير خلفية الموقع للصورة المختارة
+    function changeBg(imageSrc) {
+        document.body.style.backgroundImage = "url('" + imageSrc + "')";
+    }
+</script>
 
 </body>
 </html>
