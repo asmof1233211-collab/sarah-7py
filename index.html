@@ -326,6 +326,24 @@ updateDisplay();
         document.body.style.backgroundPosition = "center";
     }
 </script>
+<!-- أزرار التحكم بشفافية الصندوق أو المحتوى -->
+<div style="text-align: center; margin: 20px;">
+    <p style="color: white; margin-bottom: 5px;">شفافية المحتوى:</p>
+    <button onclick="changeOpacity(0.3)" style="padding: 8px 12px; cursor: pointer; border-radius: 6px; background: #2563eb; color: white; border: none;">شفاف جداً</button>
+    <button onclick="changeOpacity(0.7)" style="padding: 8px 12px; cursor: pointer; border-radius: 6px; background: #2563eb; color: white; border: none;">متوسط</button>
+    <button onclick="changeOpacity(1)" style="padding: 8px 12px; cursor: pointer; border-radius: 6px; background: #2563eb; color: white; border: none;">واضح كلياً</button>
+</div>
+
+<!-- كود التشغيل -->
+<script>
+    function changeOpacity(val) {
+        // هنا نقصد الصندوق الرئيسي أو الحاوية التي تضم محتوى موقعك (تأكد أن الـ id يطابق ما موجود في موقعك، أو اجعلها على الـ body مع استخدام rgba للخلفية)
+        let container = document.querySelector('.container') || document.body;
+        
+        // إذا أردت التأثير على الصندوق فقط دون تأثيرات جانبية على الخلفية:
+        container.style.opacity = val;
+    }
+</script>
 
 </body>
 </html>
