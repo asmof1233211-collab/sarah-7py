@@ -344,6 +344,46 @@ updateDisplay();
         container.style.opacity = val;
     }
 </script>
+<!-- زر معاينة الخلفية فقط -->
+<div style="text-align: center; margin: 20px; position: relative; z-index: 999;">
+    <button onclick="togglePreview()" id="previewBtn" style="padding: 10px 20px; font-size: 16px; cursor: pointer; border-radius: 8px; background: #0f172a; color: white; border: none;">
+        👁️ معاينة الخلفية فقط
+    </button>
+</div>
+
+<!-- كود التشغيل للمعاينة -->
+<script>
+    let isPreviewing = false;
+
+    function togglePreview() {
+        // تحديد الصندوق الرئيسي أو محتوى الصفحة
+        let container = document.querySelector('.container') || document.body;
+        let btn = document.getElementById('previewBtn');
+        
+        // استثناء زر المعاينة نفسه لكي يبقى ظاهراً وتستطيع إرجاع الشاشة
+        let allElements = document.body.children;
+
+        if (!isPreviewing) {
+            // إخفاء كل محتويات الصفحة عدا أزرار التحكم
+            for (let i = 0; i < allElements.length - 1; i++) {
+                allElements[i].style.opacity = '0';
+                allElements[i].style.pointerEvents = 'none';
+            }
+            btn.style.opacity = '1';
+            btn.style.pointerEvents = 'auto';
+            btn.innerText = '❌ إيقاف المعاينة';
+            isPreviewing = true;
+        } else {
+            // إرجاع المحتوى كما كان
+            for (let i = 0; i < allElements.length - 1; i++) {
+                allElements[i].style.opacity = '1';
+                allElements[i].style.pointerEvents = 'auto';
+            }
+            btn.innerText = '👁️ معاينة الخلفية فقط';
+            isPreviewing = false;
+        }
+    }
+</script>
 
 </body>
 </html>
