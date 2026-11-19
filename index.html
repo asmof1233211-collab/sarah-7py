@@ -304,6 +304,28 @@ updateDisplay();
         document.body.style.backgroundImage = "url('" + imageSrc + "')";
     }
 </script>
+<!-- أزرار تكبير وتصغير الخلفية -->
+<div style="text-align: center; margin: 20px;">
+    <button onclick="zoomBg(10)" style="padding: 10px 15px; font-size: 16px; cursor: pointer; border-radius: 8px; background: #2563eb; color: white; border: none; margin-left: 5px;">
+        ➕ تكبير الخلفية
+    </button>
+    <button onclick="zoomBg(-10)" style="padding: 10px 15px; font-size: 16px; cursor: pointer; border-radius: 8px; background: #0f172a; color: white; border: none; margin-left: 5px;">
+        ➖ تصغير الخلفية
+    </button>
+</div>
+
+<!-- كود التشغيل -->
+<script>
+    let currentSize = 100; // الحجم الافتراضي
+
+    function zoomBg(amount) {
+        currentSize += amount;
+        if (currentSize < 20) currentSize = 20; // أقل حد للتصغير
+        document.body.style.backgroundSize = currentSize + "%";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundPosition = "center";
+    }
+</script>
 
 </body>
 </html>
